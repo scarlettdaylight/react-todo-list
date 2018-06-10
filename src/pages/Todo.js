@@ -1,12 +1,28 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { Container, Row, Col } from 'reactstrap';
+import styled from 'styled-components';
+import TodoList from '../containers/TodoList';
+
+const PageTitle = styled.h3`
+  font-weight: 100;
+  font-size: 5rem;
+`;
 
 class TodoPage extends Component {
   render() {
     return (
-      <h3>Hey todo page</h3>
+      <Container>
+        <Row>
+          <Col xs={12}>
+            <PageTitle className="my-4">TODO LIST</PageTitle>
+          </Col>
+          <Col xs={12}>
+            <TodoList/>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
 
-export default connect()(TodoPage);
+export default TodoPage;

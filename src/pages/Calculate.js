@@ -14,9 +14,6 @@ const CaulatePageContainer = styled(Container)`
 
 class CalculatePage extends Component {
   render() {
-
-    console.log(this.props);
-
     return (
       <CaulatePageContainer>
         <Row>
@@ -35,4 +32,4 @@ class CalculatePage extends Component {
   }
 }
 
-export default connect(state => state)(CalculatePage);
+export default CalculatePage;
