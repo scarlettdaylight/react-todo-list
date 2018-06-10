@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class TodoPage extends Component {
   render() {
@@ -8,4 +9,4 @@ class TodoPage extends Component {
   }
 }
 
-export default TodoPage;
+export default connect()(TodoPage);

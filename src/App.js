@@ -18,7 +18,7 @@ class App extends Component {
               <Switch>
                 <Route path="/todo" component={TodoPage}/>
                 <Route path="/calculate" component={CalculatePage}/>
-                <Route component={CalculatePage}/>
+                <Route component={TodoPage}/>
               </Switch>
             </Col>
           </Row>
