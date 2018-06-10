@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { Container, Row, Col } from 'reactstrap';
 import CalculatePage from './pages/Calculate';
-import HomePage from './pages/Home';
 import TodoPage from './pages/Todo';
 import Menu from './components/Menu';
+import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
 class App extends Component {
@@ -11,12 +12,17 @@ class App extends Component {
     return (
       <Fragment>
         <Menu/>
-        <Switch>
-          <Route exact path="/" component={HomePage}/>
-          <Route path="/todo" component={TodoPage}/>
-          <Route path="/calculate" component={CalculatePage}/>
-          <Route component={HomePage}/>
-        </Switch>
+        <Container className="content-wrapper">
+          <Row>
+            <Col xs={12}>
+              <Switch>
+                <Route path="/todo" component={TodoPage}/>
+                <Route path="/calculate" component={CalculatePage}/>
+                <Route component={CalculatePage}/>
+              </Switch>
+            </Col>
+          </Row>
+        </Container>
       </Fragment>
     );
   }
