@@ -8,6 +8,8 @@ const StyledItem = styled.div`
     border: 1px solid rgba(0,0,0,0.14);
     background: white;
     padding-left: 48px;
+    border-top: 0;
+    box-shadow: 0px 2px 4px rgba(0,0,0,.1);
     &:after {
       content: '';
       border: 1px solid #a4a4a4;

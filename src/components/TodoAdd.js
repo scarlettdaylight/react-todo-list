@@ -46,6 +46,9 @@ class TodoAdd extends Component {
     console.log('preesss');
     if (e.key === 'Enter') {
       this.props.dispatch(addTodo(this.state.value));
+      this.setState({
+        value: '',
+      });
     }
   };
 
@@ -55,6 +58,7 @@ class TodoAdd extends Component {
       <Row>
         <Col>
           <InputField type="text" placeholder="What needs to be done?"
+                      value={this.state.value}
                       onKeyPress={this.handleKeyPress}
                       onChange={this.handleChange}/>
         </Col>
