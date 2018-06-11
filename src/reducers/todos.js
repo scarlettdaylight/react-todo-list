@@ -12,7 +12,7 @@ const todos = (state = initialState, action) => {
       return [
         ...state,
         {
-          id: action.id,
+          id: state.length + 1,
           text: action.text,
           completed: false,
         },

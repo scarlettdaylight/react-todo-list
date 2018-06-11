@@ -15,5 +15,9 @@ class TodoPage extends Component {
   }
 }
 
-const mapStateToProps = state => ({todos: state.todos});
+const mapStateToProps = state => (
+  {
+    todos: state.todos,
+  }
+);
 export default connect(mapStateToProps)(TodoPage);
