@@ -3,9 +3,13 @@ import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 import { connect } from 'react-redux';
-import { removeTodo } from '../actions/todos';
+import { removeTodo, toggleSelect } from '../actions/todos';
 
 class TodoListing extends React.PureComponent {
+
+  handleSelect = (item) => () => {
+    this.props.dispatch(toggleSelect(item));
+  };
 
   handleDelete = (item) => () => {
     this.props.dispatch(removeTodo(item));
@@ -19,7 +23,7 @@ class TodoListing extends React.PureComponent {
           <Col xs={12} key={item.id}>
             <TodoItem
               item={item}
-              onClickCheck={() => {console.log('heyyo!');}}
+              onClickCheck={this.handleSelect(item)}
               onClickDelete={this.handleDelete(item)}
             />
           </Col>,

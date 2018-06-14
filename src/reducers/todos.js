@@ -5,6 +5,7 @@ const initialState = {
   items: [
     {
       id: guid(),
+      order: 1,
       content: 'hey!',
       dueDate: '',
       completed: true,
@@ -23,6 +24,7 @@ const todos = (state = initialState, action) => {
           ...state.items,
           {
             id: nextId,
+            order: state.items.length + 1,
             content: action.content,
             dueDate: action.dueDate,
             completed: false,
@@ -38,10 +40,11 @@ const todos = (state = initialState, action) => {
     case 'TOGGLE_SELECTED':
       return {
         ...state,
-        selected: [
-          ...state.selected,
-          action.id,
-        ],
+        items: state.items.map(
+          (candidate) => (
+            candidate !== action.item
+              ? candidate
+              : {...action.item, selected: !action.item.selected})),
       };
     default:
       return state;

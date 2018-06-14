@@ -4,12 +4,12 @@ export const addTodo = (content, dueDate) => ({
   dueDate: '',
 });
 
-export const removeTodo = (item) => ({
+export const removeTodo = item => ({
   type: 'REMOVE_TODO',
   item,
 });
 
-export const toggleSelected = id => ({
+export const toggleSelect = item => ({
   type: 'TOGGLE_SELECTED',
-  id,
+  item,
 });
