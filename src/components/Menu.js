@@ -21,6 +21,11 @@ const MenuItem = styled.button`
     text-align: center;
     font-size: 14px;
     a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
       color: #E98B2A;
       transition: color 200ms ease-in;
       &:hover {
@@ -34,10 +39,14 @@ const MenuItem = styled.button`
 const Menu = () => (
   <MenuWrapper>
     <MenuItem>
-      <Link to={`/todo`}>Todo List</Link>
+      <Link to={`/todo`}>
+        <span>Todo List</span>
+      </Link>
     </MenuItem>
     <MenuItem>
-      <Link to={`/calculate`}>Calculate!</Link>
+      <Link to={`/calculate`}>
+        <span>Calculate!</span>
+      </Link>
     </MenuItem>
   </MenuWrapper>
 );
