@@ -6,7 +6,6 @@ import {
   IoIosCircleOutline,
   IoIosCircleFilled,
 } from 'react-icons/lib/io';
-import { toggleSelected } from '../actions/todos';
 
 const StyledItem = styled.div`
     padding: 16px;
@@ -15,8 +14,8 @@ const StyledItem = styled.div`
     border-top: 0;
     box-shadow: 0 2px 4px rgba(0,0,0,.1);
     svg {
-      width: 18px;
-      height: 18px;
+      width: 24px;
+      height: 24px;
     }
 `;
 
@@ -27,7 +26,8 @@ class TodoItem extends React.PureComponent {
       <StyledItem className="d-flex align-items-center justify-content-start"
                   data-id={item.id}>
         <div onClick={this.props.onClickCheck}>
-          <IoIosCircleOutline/>
+          {item.selected && <IoIosCircleFilled/>}
+          {!item.selected && <IoIosCircleOutline/>}
         </div>
         <div className="px-2">{item.content}</div>
         <div className="ml-auto" onClick={this.props.onClickDelete}>
@@ -39,7 +39,7 @@ class TodoItem extends React.PureComponent {
 
 TodoItem.propTypes = {
   item: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired,
     content: PropTypes.string.isRequired,
     dueDate: PropTypes.string.isRequired,

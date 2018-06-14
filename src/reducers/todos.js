@@ -1,9 +1,10 @@
+import { guid } from '../utils/uuid';
+
 //TODO: set initialState from localStorage
 const initialState = {
-  lastId: 1,
   items: [
     {
-      id: 1,
+      id: guid(),
       content: 'hey!',
       dueDate: '',
       completed: true,
@@ -15,7 +16,7 @@ const initialState = {
 const todos = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_TODO':
-      const nextId = state.lastId + 1;
+      const nextId = guid();
       return {
         lastId: nextId,
         items: [
@@ -28,6 +29,11 @@ const todos = (state = initialState, action) => {
             selected: false,
           },
         ],
+      };
+    case 'REMOVE_TODO':
+      return {
+        ...state,
+        items: state.items.filter((candidate) => (candidate !== action.item)),
       };
     case 'TOGGLE_SELECTED':
       return {

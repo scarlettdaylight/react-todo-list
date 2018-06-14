@@ -3,27 +3,39 @@ import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 import { connect } from 'react-redux';
+import { removeTodo } from '../actions/todos';
 
-const TodoListing = ({todos}) => (
-  <Row>
-    {todos.length > 0 && todos.map(item =>
-      <Col xs={12} key={item.id}>
-        <TodoItem
-          item={item}
-          onClickCheck={() => {console.log('heyyo!');}}
-          onClickDelete={() => {console.log('hey!');}}
-        />
-      </Col>,
-    )}
-  </Row>
-);
+class TodoListing extends React.PureComponent {
+
+  handleDelete = (item) => () => {
+    this.props.dispatch(removeTodo(item));
+  };
+
+  render() {
+    const {todos} = this.props;
+    return (
+      <Row>
+        {todos.length > 0 && todos.map(item =>
+          <Col xs={12} key={item.id}>
+            <TodoItem
+              item={item}
+              onClickCheck={() => {console.log('heyyo!');}}
+              onClickDelete={this.handleDelete(item)}
+            />
+          </Col>,
+        )}
+      </Row>
+    );
+  }
+}
 
 TodoListing.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired,
     content: PropTypes.string.isRequired,
     dueDate: PropTypes.string.isRequired,
+    selected: PropTypes.bool.isRequired,
   }).isRequired),
 };
 
