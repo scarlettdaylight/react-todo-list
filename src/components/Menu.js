@@ -10,6 +10,7 @@ const MenuWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 1px 0px 5px rgba(0,0,0,.2);
 `;
 
 const MenuItem = styled.button`
@@ -20,7 +21,11 @@ const MenuItem = styled.button`
     text-align: center;
     font-size: 14px;
     a {
+      color: #E98B2A;
+      transition: color 200ms ease-in;
       &:hover {
+        color: #78552B;
+        transition: color 200ms ease-in;
         text-decoration: none;
       }
     }
