@@ -1,49 +1,8 @@
 import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-const StyledItem = styled.div`
-    padding: 16px;
-    border: 1px solid rgba(0,0,0,0.14);
-    background: white;
-    padding-left: 48px;
-    border-top: 0;
-    box-shadow: 0px 2px 4px rgba(0,0,0,.1);
-    &:after {
-      content: '';
-      border: 1px solid #a4a4a4;
-      width: 24px;
-      height: 24px;
-      position: absolute;
-      left: 28px;
-    }
-`;
-
-const ItemToggler = styled.span`
-    height: 100%;
-    width: 50px;
-    position: absolute;
-    display: inline-block;
-    left: 15px;
-    top: 0;
-`;
-
-const TodoItem = ({item, onClick}) => (
-  <StyledItem className={item.id}>
-    <ItemToggler onClick={onClick}/>
-    <span>{item.text}</span>
-  </StyledItem>
-);
-
-TodoItem.propTypes = {
-  item: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    completed: PropTypes.bool.isRequired,
-    text: PropTypes.string.isRequired,
-  }).isRequired,
-  onClick: PropTypes.func,
-};
+import TodoItem from './TodoItem';
+import { connect } from 'react-redux';
 
 const TodoListing = ({todos}) => (
   <Row>
@@ -51,7 +10,8 @@ const TodoListing = ({todos}) => (
       <Col xs={12} key={item.id}>
         <TodoItem
           item={item}
-          onClick={() => {console.log('hey!');}}
+          onClickCheck={() => {console.log('heyyo!');}}
+          onClickDelete={() => {console.log('hey!');}}
         />
       </Col>,
     )}
@@ -62,8 +22,17 @@ TodoListing.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     completed: PropTypes.bool.isRequired,
-    text: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
+    content: PropTypes.string.isRequired,
+    dueDate: PropTypes.string.isRequired,
+  }).isRequired),
 };
 
-export default TodoListing;
+const mapStateToProps = (state) => {
+  console.log(state.todos);
+  console.log(state.todos.items.length);
+  return {
+    todos: state.todos.items,
+  };
+};
+
+export default connect(mapStateToProps)(TodoListing);

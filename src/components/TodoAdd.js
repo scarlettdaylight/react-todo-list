@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Input } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { addTodo} from '../actions/todos';
+import { addTodo } from '../actions/todos';
 
 const InputField = styled.input`
   border: 1px solid rgba(0,0,0,0.14);
@@ -43,7 +43,6 @@ class TodoAdd extends Component {
   };
 
   handleKeyPress = (e) => {
-    console.log('preesss');
     if (e.key === 'Enter') {
       this.props.dispatch(addTodo(this.state.value));
       this.setState({
@@ -53,7 +52,6 @@ class TodoAdd extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <Row>
         <Col>

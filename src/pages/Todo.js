@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import styled from 'styled-components';
-import TodoList from '../containers/TodoList';
+import TodoAdd from '../components/TodoAdd';
+import TodoListing from '../components/TodoListing';
 import 'animate.css';
 
 const PageTitle = styled.h3`
@@ -19,7 +20,8 @@ class TodoPage extends Component {
             <PageTitle className="my-4">TODO LIST</PageTitle>
           </Col>
           <Col xs={12}>
-            <TodoList/>
+            <TodoAdd/>
+            <TodoListing todos={this.props.todos}/>
           </Col>
         </Row>
       </Container>

@@ -1,4 +1,10 @@
-export const addTodo = text => ({
+export const addTodo = (content, dueDate) => ({
   type: 'ADD_TODO',
-  text,
+  content,
+  dueDate: '',
+});
+
+export const toggleSelected = id => ({
+  type: 'TOGGLE_SELECTED',
+  id,
 });
