@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import styled from 'styled-components';
 import TodoAdd from '../components/TodoAdd';
@@ -11,7 +11,7 @@ const PageTitle = styled.h3`
     color: #E98B2A;
 `;
 
-class TodoPage extends Component {
+class TodoPage extends React.PureComponent {
   render() {
     return (
       <Container>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
+import TodoFooter from './TodoFooter';
 import { connect } from 'react-redux';
 import { removeTodo, toggleSelect } from '../actions/todos';
 
@@ -28,6 +29,9 @@ class TodoListing extends React.PureComponent {
             />
           </Col>,
         )}
+        <Col xs={12}>
+          <TodoFooter items={todos}/>
+        </Col>
       </Row>
     );
   }

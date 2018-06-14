@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Container, Row, Col, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -12,7 +12,7 @@ const CaulatePageContainer = styled(Container)`
     text-align: center;
 `;
 
-class CalculatePage extends Component {
+class CalculatePage extends React.PureComponent {
   render() {
     return (
       <CaulatePageContainer>
