@@ -12,20 +12,57 @@ const CaulatePageContainer = styled(Container)`
   text-align: center;
 `;
 
-const NumberInput = styled(Input)`
+const NumberInput = styled.input`
   && {
-    padding: 16px;
+    border: 1px solid rgba(0,0,0,0.14);
+    background: rgba(255,255,255,0.8);
     border-radius: 0;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    width: 100%;
+    user-select: none;
+    transition: box-shadow 200ms ease-in;
     outline: none;
+    font-weight: 100;
+    font-size: 22px;
+    box-shadow: 0px 2px 4px rgba(0,0,0,.1);
     &:focus {
-      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+      user-select: none;
+      transition: box-shadow 200ms ease-in;
+      box-shadow: 2px 4px 10px rgba(0,0,0,.2);
+      background: white;
+    }
+    &::placeholder {
+      font-style: italic;
     }
   }
 `;
 
 const PaperBackground = styled.div`
-  background: #ebb471;
+    padding: 16px;
+    margin-top: 16px;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.14);
+    font-weight: 100;
+`;
+
+const IntermediateRow = styled.div`
+  border-bottom: 1px solid rgba(0,0,0,0.14);
+  padding: 4px;
+`;
+
+const FormulaRow = styled.div`
+    width: 80%;
+    word-wrap: break-word;
+`;
+
+const ResultRow = styled.div`
+    width: 20%;
+`;
+
+const FinalResultRow = styled.div`
+  font-size: 20px;
+  font-weight: 500;
+  padding: 4px;
 `;
 
 class CalculatePage extends Component {
@@ -46,7 +83,7 @@ class CalculatePage extends Component {
     }
     if (num.length > 1) {
       let c = num[0];
-      for (var i = 1; i < num.length; i++) {
+      for (let i = 1; i < num.length; i++) {
         c += `+${num[i]}`;
       }
       steps.push(c);
@@ -82,7 +119,7 @@ class CalculatePage extends Component {
               type="text"
               name="number"
               id="recursive-number"
-              placeholder="Enter the number"
+              placeholder="Enter the magic number"
               onChange={this.handleInputKeyPress}
               value={this.state.value}
             />
@@ -90,18 +127,21 @@ class CalculatePage extends Component {
         </Row>
         <Row className="align-items-center justify-content-center">
           <Col xs={12}>
+            {steps.length > 0 &&
             <PaperBackground>
               {steps.map(function (val, index) {
                 return (
-                  <div key={index}>
-                    <div>{val.replace(/\+/g, '')}</div>
-                    <div>{val}</div>
-                  </div>
+                  <IntermediateRow key={index}
+                                   className="d-flex align-content-center justify-content-between">
+                    <FormulaRow>{val}</FormulaRow>
+                    <ResultRow>= {eval(val)}</ResultRow>
+                  </IntermediateRow>
                 );
               })}
+              <FinalResultRow>{this.state.result}</FinalResultRow>
             </PaperBackground>
+            }
           </Col>
-          <Col xs={8}>{this.state.result}</Col>
         </Row>
       </CaulatePageContainer>
     );
