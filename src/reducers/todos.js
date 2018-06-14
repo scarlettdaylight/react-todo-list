@@ -1,17 +1,7 @@
 import { guid } from '../utils/uuid';
 
-//TODO: set initialState from localStorage
 const initialState = {
-  items: [
-    {
-      id: guid(),
-      order: 1,
-      content: 'hey!',
-      dueDate: '',
-      completed: true,
-      selected: true,
-    },
-  ],
+  items: [],
 };
 
 const todos = (state = initialState, action) => {
