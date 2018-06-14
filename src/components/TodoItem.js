@@ -19,19 +19,28 @@ const StyledItem = styled.div`
     }
 `;
 
+const Checkbox = styled.div`
+    cursor: pointer;
+`;
+
+const DeleteButton = styled.div`
+    cursor: pointer;
+`;
+
 class TodoItem extends React.PureComponent {
   render() {
     const {item} = this.props;
     return (
       <StyledItem className="d-flex align-items-center justify-content-start"
                   data-id={item.id}>
-        <div onClick={this.props.onClickCheck}>
+        <Checkbox onClick={this.props.onClickCheck}>
           {item.selected && <IoIosCircleFilled/>}
           {!item.selected && <IoIosCircleOutline/>}
-        </div>
+        </Checkbox>
         <div className="px-2">{item.content}</div>
-        <div className="ml-auto" onClick={this.props.onClickDelete}>
-          <IoIosCloseEmpty/></div>
+        <DeleteButton className="ml-auto" onClick={this.props.onClickDelete}>
+          <IoIosCloseEmpty/>
+        </DeleteButton>
       </StyledItem>
     );
   }

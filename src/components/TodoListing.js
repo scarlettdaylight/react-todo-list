@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 import TodoFooter from './TodoFooter';
 import { connect } from 'react-redux';
-import { removeTodo, toggleSelect } from '../actions/todos';
+import { removeTodo, removeMassTodo, toggleSelect } from '../actions/todos';
 
 class TodoListing extends React.PureComponent {
 
@@ -14,6 +14,10 @@ class TodoListing extends React.PureComponent {
 
   handleDelete = (item) => () => {
     this.props.dispatch(removeTodo(item));
+  };
+
+  handleMassDelete = () => {
+    this.props.dispatch(removeMassTodo());
   };
 
   render() {
@@ -30,7 +34,7 @@ class TodoListing extends React.PureComponent {
           </Col>,
         )}
         <Col xs={12}>
-          <TodoFooter items={todos}/>
+          <TodoFooter items={todos} onClickDelete={this.handleMassDelete}/>
         </Col>
       </Row>
     );

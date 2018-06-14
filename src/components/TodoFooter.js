@@ -8,13 +8,24 @@ const FooterBackground = styled.div`
     border-top: 0;
     box-shadow: 0 2px 4px rgba(0,0,0,.1);
     font-size: 14px;
-    font-weight: light;
+    font-weight: 100;
+`;
+
+const MassDeleteButton = styled.div`
+  padding: 2px 4px;
+  background: #ee6060;
+  color: white;
+  cursor: pointer;
 `;
 
 class TodoFooter extends React.PureComponent {
   render() {
     return (
-      <FooterBackground>{this.props.items.length} items left.</FooterBackground>
+      <FooterBackground
+        className="d-flex align-items-center justify-content-between">
+        <div>{this.props.items.length} items left.</div>
+        <MassDeleteButton onClick={this.props.onClickDelete}>Delete</MassDeleteButton>
+      </FooterBackground>
     );
   }
 }

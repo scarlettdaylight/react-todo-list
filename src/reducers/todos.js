@@ -37,6 +37,11 @@ const todos = (state = initialState, action) => {
         ...state,
         items: state.items.filter((candidate) => (candidate !== action.item)),
       };
+    case 'REMOVE_MASS_TODO':
+      return {
+        ...state,
+        items: state.items.filter((candidate) => (candidate.selected !== true)),
+      };
     case 'TOGGLE_SELECTED':
       return {
         ...state,

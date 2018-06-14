@@ -9,6 +9,10 @@ export const removeTodo = item => ({
   item,
 });
 
+export const removeMassTodo = () => ({
+  type: 'REMOVE_MASS_TODO',
+});
+
 export const toggleSelect = item => ({
   type: 'TOGGLE_SELECTED',
   item,
